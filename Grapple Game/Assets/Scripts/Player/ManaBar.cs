@@ -4,6 +4,7 @@ using TMPro;
 public class ManaBar : MonoBehaviour
 {
     int _mana = 0;
+    [SerializeField] int initMana;
     public int Mana {
         get => _mana;
         set {
@@ -13,6 +14,6 @@ public class ManaBar : MonoBehaviour
     }
     public TextMeshProUGUI TextBox;
     void Start() {
-        Mana = 50;
+        Mana = initMana;
     }
 }

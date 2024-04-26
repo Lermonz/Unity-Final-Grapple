@@ -866,6 +866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3201a63c464c848d281c2916fe99003e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initMana: 5
   TextBox: {fileID: 1598708405}
 --- !u!1001 &954607427
 PrefabInstance:
