@@ -18,12 +18,14 @@ public class EnemyStateMachine : MonoBehaviour
     public WanderingAI WanderingAI;
     public AttackAI AttackAI;
     public DealsDamage DealsDamage;
+    public EnemyGotGrappled EnemyGotGrappled;
     void Awake()
     {
         ReactiveTarget = GetComponent<ReactiveTarget>();
         WanderingAI = GetComponent<WanderingAI>();
         AttackAI = GetComponent<AttackAI>();
         DealsDamage = GetComponent<DealsDamage>();
+        EnemyGotGrappled = GetComponent<EnemyGotGrappled>();
     }
     void Start() {
         EnemyHealth = _maxHealth;
@@ -54,11 +56,20 @@ public class EnemyStateMachine : MonoBehaviour
             SetState(HurtState);
         }
     }
+    public void GotGrappled() {
+        SetState(GrappledState);
+    }
     private void OnCollisionEnter(Collision other)
     {
         PlayerCharacter player = other.gameObject.GetComponent<PlayerCharacter>();
+        GrappleShooter grapple = other.gameObject.GetComponent<GrappleShooter>();
+        Debug.Log("Touched by: "+player+grapple);
         if (player != null) {
             SetState(DealDamageState);
+        }
+        else if(grapple != null) {
+            Debug.Log("Enemy Touched Grapple!");
+            SetState(GrappledState);
         }
     }
 }

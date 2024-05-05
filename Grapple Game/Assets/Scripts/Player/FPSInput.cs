@@ -15,7 +15,7 @@ public class FPSInput : MonoBehaviour
     float _gravity = -50f;
     float _vertSpeed;
     float _minFall = -1f;
-    float _terminalVelocity = -4.0f;
+    float _terminalVelocity = -10.0f;
         float _groundCheckDistance;
     ControllerColliderHit _contact;
 

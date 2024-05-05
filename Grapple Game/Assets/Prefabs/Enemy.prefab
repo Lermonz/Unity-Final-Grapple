@@ -18,9 +18,10 @@ GameObject:
   - component: {fileID: -6361730326317471743}
   - component: {fileID: -517039671640221025}
   - component: {fileID: 4660907272502942055}
+  - component: {fileID: 929616800123207553}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,6 +164,7 @@ MonoBehaviour:
   WanderingAI: {fileID: 0}
   AttackAI: {fileID: 0}
   DealsDamage: {fileID: 0}
+  EnemyGotGrappled: {fileID: 0}
 --- !u!114 &-517039671640221025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,3 +190,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+--- !u!114 &929616800123207553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2949011217591344429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20b37dd81dee44d0ba83a129e867ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

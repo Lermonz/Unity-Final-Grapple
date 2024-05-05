@@ -5,6 +5,7 @@ public class ReactiveTarget : MonoBehaviour
 {
     [SerializeField] float _deathAnimTime = 1.5f;
     EnemyStateMachine _stateMachine;
+    bool _isDead;
 
     void Start() {
         _stateMachine = GetComponent<EnemyStateMachine>();
@@ -17,17 +18,26 @@ public class ReactiveTarget : MonoBehaviour
     // This code will be triggered once the entity has been shot.
     public void ReactToHit(float damage)
     {
-        _stateMachine.EnemyHealth -= damage;
-        _stateMachine.GotHit();
-        WanderingAI behavior = GetComponent<WanderingAI>();
-        if (behavior != null)
-            behavior.SetAlive(false);
-        StartCoroutine(Die());
+        if(_stateMachine != null) {
+            if(!_isDead) {
+                _stateMachine.EnemyHealth -= damage;
+                _stateMachine.GotHit();
+                WanderingAI behavior = GetComponent<WanderingAI>();
+                if (behavior != null)
+                    behavior.SetAlive(false);
+                StartCoroutine(Die());
+            }
+        }
+        else {
+            GameBehaviour.Instance.KillEnemy();
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator Die()
     {
         float elapsedTime = 0.0f;
+        _isDead = true;
 
         while (elapsedTime < _deathAnimTime)
         {

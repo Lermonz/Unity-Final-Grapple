@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameBehaviour : MonoBehaviour
 {
@@ -6,8 +8,12 @@ public class GameBehaviour : MonoBehaviour
     public GameState State = GameState.Play;
     public int _onLevel;
     public int[] _enemyReq = new int[5];
+    public string[] _levelScene = new string[5];
     [SerializeField] KillCount _totalKills;
     [SerializeField] ManaBar _currentMana;
+    [SerializeField] GameObject _levelClearText;
+    bool _levelClear;
+    public bool LevelClear { get => _levelClear; set { _levelClear = value;  } }
     void Awake()
     {
         // Singleton pattern
@@ -38,5 +44,18 @@ public class GameBehaviour : MonoBehaviour
                 State = GameState.Play;
             }
         }
+        if(_totalKills.Kills == _enemyReq[_onLevel-1] && !_levelClear) {
+            _levelClear = true;
+            StartCoroutine(LoadNextLevel());
+        }
+    }
+    IEnumerator LoadNextLevel() {
+        _levelClearText.transform.localPosition = new Vector3(0,70,0);
+        yield return new WaitForSeconds(1f);
+        _levelClearText.transform.localPosition = new Vector3(0,700,0);
+        _totalKills.Kills = 0;
+        _levelClear = false;
+        _onLevel++;
+        SceneManager.LoadScene(_levelScene[_onLevel-1]);
     }
 }

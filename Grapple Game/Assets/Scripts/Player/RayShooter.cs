@@ -13,6 +13,8 @@ public class RayShooter : MonoBehaviour
     int _manaCost = 2;
     PlayerStateMachine _stateMachine;
     ManaBar _manaBar;
+    CharacterController _controller;
+    
 
     private void Start()
     {
@@ -20,6 +22,7 @@ public class RayShooter : MonoBehaviour
         _cam = _camObject.GetComponent<Camera>();
         _stateMachine = GetComponent<PlayerStateMachine>();
         _manaBar = GetComponent<ManaBar>();
+        _controller = GetComponent<CharacterController>();
 
         // Lock cursor to the middle of the screen and hide it.
         Cursor.lockState = CursorLockMode.Locked;
@@ -29,13 +32,16 @@ public class RayShooter : MonoBehaviour
     public void Clicker()
     {
         if (Input.GetAxis("Fire1") != 0) {
+            if(_grappler != null) {
+                Destroy(_grappler);
+            }
             _stateMachine.SwingWeapon();
         }
         if (Input.GetAxis("Fire2") != 0) {
             if(_grappler == null) {
                 _stateMachine.IsGrappling(true);
                 //create a GrappleEndPrefab at a position relative to the player, and rotation relative to the camera
-                _grappler = Instantiate(_grappleEndPrefab, transform.TransformPoint(Vector3.forward * 1.5f), _camObject.transform.rotation);
+                _grappler = Instantiate(_grappleEndPrefab, _camObject.transform.position, _camObject.transform.rotation);
             }
         }
     }
@@ -46,8 +52,7 @@ public class RayShooter : MonoBehaviour
         GameBehaviour.Instance.ChangeMana(-_manaCost);
         // Create a ray that goes forward from player
         Ray ray = new Ray(transform.position, transform.forward);
-        Debug.Log("start: "+transform.position+"\ndir: "+transform.forward);
-        Debug.DrawRay(transform.position, transform.forward, Color.red, 5f);
+        //Debug.Log("start: "+transform.position+"\ndir: "+transform.forward);
         // Data structure to record information about the ray collision
         RaycastHit hit;
         // Check if the created ray collided with any geometry
@@ -56,7 +61,7 @@ public class RayShooter : MonoBehaviour
             // Retrieve GameObject ray collided with.
             GameObject hitObj = hit.transform.gameObject;
             ReactiveTarget target = hitObj.GetComponent<ReactiveTarget>();
-            Debug.Log("hitObj: "+hitObj);
+            //Debug.Log("hitObj: "+hitObj);
             float lightningSize;
             //if it hits nothing, lightning still has a size
             if(hitObj != null) {

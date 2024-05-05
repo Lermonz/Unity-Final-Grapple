@@ -24,10 +24,10 @@ public class ControlSword : MonoBehaviour
     {
         if(Input.GetAxis("Fire1") != 0) {
             chargeTime += Time.deltaTime;
-            Debug.Log("IS CHARGING");
+            //Debug.Log("IS CHARGING");
             if (chargeTime >= _chargeLimit) {
                 _doneCharging = true;
-                Debug.Log("READY TO FIRE");
+                //Debug.Log("READY TO FIRE");
                 if(_chargeDisplay == null) {
                     _chargeDisplay = Instantiate(_lightningPrefab, _sword.transform.position, _sword.transform.rotation);
                     _chargeDisplay.transform.SetParent(_sword.transform);
