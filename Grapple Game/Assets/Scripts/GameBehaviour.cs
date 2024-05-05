@@ -44,6 +44,10 @@ public class GameBehaviour : MonoBehaviour
                 State = GameState.Play;
             }
         }
+        //Debug stuff to get through levels quickly in testing
+        if(Input.GetKeyDown(KeyCode.L)) {
+            _totalKills.Kills = _enemyReq[_onLevel-1];
+        }
         if(_totalKills.Kills == _enemyReq[_onLevel-1] && !_levelClear) {
             _levelClear = true;
             StartCoroutine(LoadNextLevel());

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AttackAI : MonoBehaviour
 {
-    float _speed = 2.5f;
+    float _speed = 3.5f;
     Rigidbody _body;
     EnemyStateMachine _stateMachine;
     void Awake() {

@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -517039671640221025}
   - component: {fileID: 4660907272502942055}
   - component: {fileID: 929616800123207553}
+  - component: {fileID: 1821816270215263324}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5909da23d60478f9ad334dc288a59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathAnimTime: 1.5
+  _deathAnimTime: 0.8
 --- !u!114 &2949011217591344422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _obstacleRange: 5
+  _maxDistFromHome: 7
 --- !u!114 &-6361730326317471743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +167,7 @@ MonoBehaviour:
   AttackAI: {fileID: 0}
   DealsDamage: {fileID: 0}
   EnemyGotGrappled: {fileID: 0}
+  FlashHurt: {fileID: 0}
 --- !u!114 &-517039671640221025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,3 +205,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20b37dd81dee44d0ba83a129e867ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1821816270215263324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2949011217591344429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d7fcca3b5a4406c959f43ddfd134db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashingColor: {fileID: 2100000, guid: 15f62b8e9908f4b8f9fb91e210197fc4, type: 2}

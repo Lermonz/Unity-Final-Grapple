@@ -13,6 +13,7 @@ public class PlayerGrapplePull : PlayerBaseState
         //Debug.Log("Pull State - Update");
     }
     public override void ExitState(PlayerStateMachine player){
+        player.FPSInput.VertSpeed = -1;
         //Debug.Log("Camera RESET!");
     }
 }

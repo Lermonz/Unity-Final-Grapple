@@ -52,7 +52,7 @@ public class GrappleShooter : MonoBehaviour
             }
             else if(col.CompareTag("Pickup")) {
             }
-            else {
+            else if(!_followPlayer) {
                 _direction = 0;
                 thePlayer.IsPulledByGrapple();
                 StopAllCoroutines(); //prevents the grapple from returning to the player

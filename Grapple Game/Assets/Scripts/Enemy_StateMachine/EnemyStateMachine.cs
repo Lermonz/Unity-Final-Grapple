@@ -19,6 +19,7 @@ public class EnemyStateMachine : MonoBehaviour
     public AttackAI AttackAI;
     public DealsDamage DealsDamage;
     public EnemyGotGrappled EnemyGotGrappled;
+    public FlashHurt FlashHurt;
     void Awake()
     {
         ReactiveTarget = GetComponent<ReactiveTarget>();
@@ -26,6 +27,7 @@ public class EnemyStateMachine : MonoBehaviour
         AttackAI = GetComponent<AttackAI>();
         DealsDamage = GetComponent<DealsDamage>();
         EnemyGotGrappled = GetComponent<EnemyGotGrappled>();
+        FlashHurt = GetComponent<FlashHurt>();
     }
     void Start() {
         EnemyHealth = _maxHealth;
@@ -48,6 +50,7 @@ public class EnemyStateMachine : MonoBehaviour
         SetState(AttackState);
     }
     public void GotHit() {
+        Debug.Log(_enemyHealth);
         if(_enemyHealth <= 0) {
             GameBehaviour.Instance.KillEnemy();
             SetState(DieState);

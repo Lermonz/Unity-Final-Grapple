@@ -22,10 +22,7 @@ public class ReactiveTarget : MonoBehaviour
             if(!_isDead) {
                 _stateMachine.EnemyHealth -= damage;
                 _stateMachine.GotHit();
-                WanderingAI behavior = GetComponent<WanderingAI>();
-                if (behavior != null)
-                    behavior.SetAlive(false);
-                StartCoroutine(Die());
+                //StartCoroutine(Die());
             }
         }
         else {
@@ -33,8 +30,11 @@ public class ReactiveTarget : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void Die() {
+        StartCoroutine(DieCoro());
+    }
 
-    IEnumerator Die()
+    IEnumerator DieCoro()
     {
         float elapsedTime = 0.0f;
         _isDead = true;

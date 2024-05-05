@@ -25,7 +25,7 @@ public class DealsDamage : MonoBehaviour
         transform.Translate(0, 0, 1.5f * Time.deltaTime);
     }
     IEnumerator ReturnToWander() {
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.1f);
         _stateMachine.Wandering();
     }
 }

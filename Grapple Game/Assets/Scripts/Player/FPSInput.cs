@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 // Require a CharacterController component on the object.
@@ -14,8 +15,9 @@ public class FPSInput : MonoBehaviour
     float _jumpSpeed = 10f;
     float _gravity = -50f;
     float _vertSpeed;
+    public float VertSpeed { get => _vertSpeed; set {_vertSpeed = value; }}
     float _minFall = -1f;
-    float _terminalVelocity = -10.0f;
+    float _terminalVelocity = -20.0f;
         float _groundCheckDistance;
     ControllerColliderHit _contact;
 

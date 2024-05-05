@@ -56,11 +56,12 @@ public class RayShooter : MonoBehaviour
         // Data structure to record information about the ray collision
         RaycastHit hit;
         // Check if the created ray collided with any geometry
-        if (Physics.SphereCast(ray, 2.0f, out hit))
+        if (Physics.SphereCast(ray, 1.0f, out hit))
         {
             // Retrieve GameObject ray collided with.
             GameObject hitObj = hit.transform.gameObject;
             ReactiveTarget target = hitObj.GetComponent<ReactiveTarget>();
+            Debug.Log(hitObj);
             //Debug.Log("hitObj: "+hitObj);
             float lightningSize;
             //if it hits nothing, lightning still has a size

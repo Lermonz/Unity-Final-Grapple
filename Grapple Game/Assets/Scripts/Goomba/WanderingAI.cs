@@ -8,23 +8,17 @@ public class WanderingAI : MonoBehaviour
     [SerializeField] float _obstacleRange = 5.0f;
 
     private readonly float _sphereRadius = 4.0f;
-    private bool _isAlive;
 
     float _travelTime = 2;
     float _stopTime = 1;
     bool _canMove;
 
     Vector3 _home;
-    float _maxDistFromHome = 7.0f;
+    [SerializeField] float _maxDistFromHome;
 
     EnemyStateMachine _stateMachine;
-
-    // [SerializeField] GameObject _fireballPrefab;
-    // public GameObject _fireball;
-
     private void Start()
     {
-        SetAlive(true);
         _home = transform.position;
         _stateMachine = GetComponent<EnemyStateMachine>();
     }
@@ -39,7 +33,7 @@ public class WanderingAI : MonoBehaviour
         if(_canMove) {
             transform.Translate(0, 0, _speed * Time.deltaTime);
         }
-        Ray ray = new(transform.position, transform.forward);
+        Ray ray = new(transform.position-transform.forward, transform.forward);
         float dist = Vector3.Distance(transform.position, _home);
         if (dist >= _maxDistFromHome) {
             Vector3 _homeY = new Vector3(_home.x, 
@@ -79,18 +73,14 @@ public class WanderingAI : MonoBehaviour
         }
     }
 // this guy will "lunge" at you, and be knocked back when hit
-    public void SetAlive(bool alive)
-    {
-        _isAlive = alive;
-    }
     IEnumerator Move(float theta) {
-        Debug.Log("Move (theta)");
+        //Debug.Log("Move (theta)");
         transform.Rotate(0,theta,0);
         yield return new WaitForSeconds(_travelTime);
         StartCoroutine(Wait());
     }
     IEnumerator Move() {
-        Debug.Log("Move");
+        //Debug.Log("Move");
         while (Mathf.Abs(transform.position.z - _home.z) > 1f) {
             yield return null;
         }
@@ -98,7 +88,7 @@ public class WanderingAI : MonoBehaviour
         StartCoroutine(Wait());
     }
     IEnumerator Wait() {
-        Debug.Log("Wait");
+        //Debug.Log("Wait");
         _canMove = false;
         yield return new WaitForSeconds(_stopTime);
         _canMove = true;

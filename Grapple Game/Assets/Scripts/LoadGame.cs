@@ -5,6 +5,6 @@ public class LoadGame : MonoBehaviour
 {
     public void LoadScene()
     {
-        SceneManager.LoadScene("TestLvl1");
+        SceneManager.LoadScene("TestLvl0");
     }
 }
