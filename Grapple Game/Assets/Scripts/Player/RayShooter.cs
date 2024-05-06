@@ -14,7 +14,7 @@ public class RayShooter : MonoBehaviour
     PlayerStateMachine _stateMachine;
     ManaBar _manaBar;
     CharacterController _controller;
-    
+    [SerializeField] Texture _crosshair;
 
     private void Start()
     {
@@ -84,7 +84,7 @@ public class RayShooter : MonoBehaviour
     void OnGUI()
     {
         // Size of the rectangular GUI that will contain the text.
-        int size = 12;
+        int size = 24;
 
         // Position of the text. Note that subtracting the scaled size will
         // ensure that the star is centered.
@@ -95,7 +95,7 @@ public class RayShooter : MonoBehaviour
         GUI.contentColor = Color.red;
 
         // Render a label that defines a position and the text it contains.
-        GUI.Label(new Rect(posX, posY, size, size), "*");
+        GUI.Label(new Rect(posX, posY, size, size), _crosshair);
     }
 
     IEnumerator LightningIsTemp()

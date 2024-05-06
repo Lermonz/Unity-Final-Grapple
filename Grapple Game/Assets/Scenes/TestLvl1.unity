@@ -1010,6 +1010,10 @@ MonoBehaviour:
   _totalKills: {fileID: 1432092743}
   _currentMana: {fileID: 0}
   _levelClearText: {fileID: 0}
+  _dieText: {fileID: 0}
+  _winText: {fileID: 0}
+  _pauseText: {fileID: 0}
+  StopTimer: 0
 --- !u!4 &486630038
 Transform:
   m_ObjectHideFlags: 0
@@ -4986,7 +4990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3201a63c464c848d281c2916fe99003e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initMana: 5
   TextBox: {fileID: 0}
 --- !u!114 &1678824788
 MonoBehaviour:
@@ -5043,6 +5046,7 @@ MonoBehaviour:
   _grappler: {fileID: 0}
   _lightningPrefab: {fileID: 6790185593051232840, guid: 864bd1b55399e4ff38726c5b8986f1ea, type: 3}
   _lightning: {fileID: 0}
+  _crosshair: {fileID: 2800000, guid: c40ff5c45da3b472a9ee59b4f987c840, type: 3}
 --- !u!114 &1678824792
 MonoBehaviour:
   m_ObjectHideFlags: 0

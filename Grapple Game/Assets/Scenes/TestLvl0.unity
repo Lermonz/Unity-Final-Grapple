@@ -1792,7 +1792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2658064430811570732, guid: 0ba507d71f9c54031b87d66ce181da4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.79
+      value: 4.19
       objectReference: {fileID: 0}
     - target: {fileID: 2658064430811570732, guid: 0ba507d71f9c54031b87d66ce181da4e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2799,6 +2799,7 @@ MonoBehaviour:
   _grappler: {fileID: 0}
   _lightningPrefab: {fileID: 6790185593051232840, guid: 864bd1b55399e4ff38726c5b8986f1ea, type: 3}
   _lightning: {fileID: 0}
+  _crosshair: {fileID: 2800000, guid: c40ff5c45da3b472a9ee59b4f987c840, type: 3}
 --- !u!114 &810756051
 MonoBehaviour:
   m_ObjectHideFlags: 0

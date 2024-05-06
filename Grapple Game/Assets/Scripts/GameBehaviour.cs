@@ -1,4 +1,5 @@
 using System.Collections;
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +24,7 @@ public class GameBehaviour : MonoBehaviour
     public int PlayerMana { get => _playerMana; set { _playerMana = value;  } }
     public bool StopTimer;
     bool _returnToTitle;
+    DontDestroy Canvas;
     void Awake()
     {
         // Singleton pattern
@@ -44,6 +46,7 @@ public class GameBehaviour : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         StopTimer = false;
+        Canvas = GameObject.Find("Canvas").GetComponent<DontDestroy>();
         _returnToTitle = false;
     }
     void Update()
@@ -66,9 +69,9 @@ public class GameBehaviour : MonoBehaviour
             }
         }
         //Debug stuff to get through levels quickly in testing
-        if(Input.GetKeyDown(KeyCode.L)) {
-            _totalKills.Kills = _enemyReq[_onLevel-1];
-        }
+        // if(Input.GetKeyDown(KeyCode.L)) {
+        //     _totalKills.Kills = _enemyReq[_onLevel-1];
+        // }
         if(_totalKills.Kills == _enemyReq[_onLevel-1] && !_levelClear) {
             _levelClear = true;
             StartCoroutine(LoadNextLevel());
@@ -109,16 +112,16 @@ public class GameBehaviour : MonoBehaviour
         if(_dieText != null) {
             _dieText.transform.localPosition = new Vector3(0,70,0);
             yield return new WaitForSeconds(1f);
-            _dieText.transform.localPosition = new Vector3(0,700,0);
         }
-        yield return null;
+        else
+            yield return null;
         StartCoroutine(LoadTitle());
     }
     IEnumerator LoadTitle() {
+        yield return new WaitForSeconds(0.05f);
         _totalKills.Kills = 0;
-        var Canvas = GameObject.Find("Canvas");
-        if (Canvas.GetComponent<DontDestroy>() != null) {
-            Destroy(Canvas);
+        if (Canvas != null) {
+            Destroy(Canvas.gameObject);
         }
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
