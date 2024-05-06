@@ -10,10 +10,10 @@ public class SwordHitBox : MonoBehaviour
     {
         LayerMask mask = 3;
         _detect = Physics.BoxCast(transform.position-transform.forward, 
-        new Vector3(1.2f,0.7f,1f), transform.forward, out _hit, transform.rotation, 3f, mask);
+        new Vector3(1.2f,0.7f,1f), transform.forward, out _hit, transform.rotation, 2.5f, mask);
         if(_detect) {
             GameObject hitObj = _hit.transform.gameObject;
-            Debug.Log("Hit something!!!"+hitObj);
+            //Debug.Log("Hit something!!!"+hitObj);
             ReactiveTarget target = hitObj.GetComponent<ReactiveTarget>();
             if (target != null) {
                 target.ReactToHit(_swordDmg);

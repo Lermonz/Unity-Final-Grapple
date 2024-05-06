@@ -17,6 +17,7 @@ public class PlayerCharacter : MonoBehaviour
         if(!_iframes) {
             _health -= damage;
             TextBox.text = _health.ToString()+" HP";
+            GameBehaviour.Instance.PlayerHealth = _health;
             StartCoroutine(IFrames());
         }
     }
@@ -24,5 +25,10 @@ public class PlayerCharacter : MonoBehaviour
         _iframes = true;
         yield return new WaitForSeconds(0.2f);
         _iframes = false;
+    }
+    void OnTriggerEnter(Collider other) {
+        if(other.CompareTag("Death")) {
+            Hurt(999);
+        }
     }
 }

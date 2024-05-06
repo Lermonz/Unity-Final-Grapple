@@ -38,7 +38,7 @@ public class GrappleShooter : MonoBehaviour
                 Destroy(gameObject);
             }
             else if(col.CompareTag("Enemy")) {
-                Debug.Log("Grapple Touched Enemy");
+                //Debug.Log("Grapple Touched Enemy");
                 _followPlayer = true;
                 _speed*=0.8f;
                 EnemyStateMachine enemy = col.GetComponent<EnemyStateMachine>();

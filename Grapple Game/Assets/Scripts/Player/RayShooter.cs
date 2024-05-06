@@ -23,10 +23,6 @@ public class RayShooter : MonoBehaviour
         _stateMachine = GetComponent<PlayerStateMachine>();
         _manaBar = GetComponent<ManaBar>();
         _controller = GetComponent<CharacterController>();
-
-        // Lock cursor to the middle of the screen and hide it.
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     public void Clicker()
@@ -49,7 +45,7 @@ public class RayShooter : MonoBehaviour
         if(_manaBar.Mana < _manaCost) {
             return;
         }
-        GameBehaviour.Instance.ChangeMana(-_manaCost);
+        _manaBar.ChangeMana(-_manaCost);
         // Create a ray that goes forward from player
         Ray ray = new Ray(transform.position, transform.forward);
         //Debug.Log("start: "+transform.position+"\ndir: "+transform.forward);
@@ -61,7 +57,7 @@ public class RayShooter : MonoBehaviour
             // Retrieve GameObject ray collided with.
             GameObject hitObj = hit.transform.gameObject;
             ReactiveTarget target = hitObj.GetComponent<ReactiveTarget>();
-            Debug.Log(hitObj);
+            //Debug.Log(hitObj);
             //Debug.Log("hitObj: "+hitObj);
             float lightningSize;
             //if it hits nothing, lightning still has a size

@@ -50,7 +50,7 @@ public class EnemyStateMachine : MonoBehaviour
         SetState(AttackState);
     }
     public void GotHit() {
-        Debug.Log(_enemyHealth);
+        //Debug.Log(_enemyHealth);
         if(_enemyHealth <= 0) {
             GameBehaviour.Instance.KillEnemy();
             SetState(DieState);
@@ -66,12 +66,12 @@ public class EnemyStateMachine : MonoBehaviour
     {
         PlayerCharacter player = other.gameObject.GetComponent<PlayerCharacter>();
         GrappleShooter grapple = other.gameObject.GetComponent<GrappleShooter>();
-        Debug.Log("Touched by: "+player+grapple);
+        //Debug.Log("Touched by: "+player+grapple);
         if (player != null) {
             SetState(DealDamageState);
         }
         else if(grapple != null) {
-            Debug.Log("Enemy Touched Grapple!");
+            //Debug.Log("Enemy Touched Grapple!");
             SetState(GrappledState);
         }
     }

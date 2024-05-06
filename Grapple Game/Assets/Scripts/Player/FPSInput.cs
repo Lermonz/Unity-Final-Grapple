@@ -18,7 +18,7 @@ public class FPSInput : MonoBehaviour
     public float VertSpeed { get => _vertSpeed; set {_vertSpeed = value; }}
     float _minFall = -1f;
     float _terminalVelocity = -20.0f;
-        float _groundCheckDistance;
+    float _groundCheckDistance;
     ControllerColliderHit _contact;
 
     private CharacterController _controller;

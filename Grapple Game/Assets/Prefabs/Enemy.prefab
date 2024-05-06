@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5909da23d60478f9ad334dc288a59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathAnimTime: 0.8
+  _deathAnimTime: 0.6
 --- !u!114 &2949011217591344422
 MonoBehaviour:
   m_ObjectHideFlags: 0

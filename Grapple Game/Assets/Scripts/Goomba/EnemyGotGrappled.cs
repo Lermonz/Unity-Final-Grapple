@@ -21,4 +21,7 @@ public class EnemyGotGrappled : MonoBehaviour
             _stateMachine.Wandering();
         }
     }
+    public void FixRot() {
+        transform.localEulerAngles = Vector3.up*transform.localEulerAngles.y;
+    }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ReactiveTarget : MonoBehaviour
 {
-    [SerializeField] float _deathAnimTime = 1.5f;
+    [SerializeField] float _deathAnimTime;
     EnemyStateMachine _stateMachine;
     bool _isDead;
 
@@ -13,7 +13,7 @@ public class ReactiveTarget : MonoBehaviour
 
     // Used for interpolating rotation
     private Quaternion _initRotation = Quaternion.Euler(0, 0, 0);
-    private Quaternion _endRotation = Quaternion.Euler(-75, 0, 0);
+    private Quaternion _endRotation;
 
     // This code will be triggered once the entity has been shot.
     public void ReactToHit(float damage)
@@ -31,6 +31,9 @@ public class ReactiveTarget : MonoBehaviour
         }
     }
     public void Die() {
+        var _body = GetComponent<Rigidbody>();
+        _body.velocity = Vector3.up*4f;
+        _endRotation = Quaternion.Euler(Random.Range(-50,-75), Random.Range(-30,-60), Random.Range(-10,-20));
         StartCoroutine(DieCoro());
     }
 
@@ -38,18 +41,16 @@ public class ReactiveTarget : MonoBehaviour
     {
         float elapsedTime = 0.0f;
         _isDead = true;
-
+        
         while (elapsedTime < _deathAnimTime)
         {
             transform.rotation = Quaternion.Lerp(
-                _initRotation, _endRotation, elapsedTime / _deathAnimTime);
+                _initRotation, _endRotation, elapsedTime*5f / _deathAnimTime);
 
             elapsedTime += Time.deltaTime;
 
             yield return null;
         }
-
-        yield return new WaitForSeconds(1);
 
         Destroy(gameObject);
     }

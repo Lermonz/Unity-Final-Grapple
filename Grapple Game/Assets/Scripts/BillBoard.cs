@@ -3,6 +3,7 @@ using UnityEngine;
 public class BillBoard : MonoBehaviour
 {
     GameObject _player;
+    [SerializeField] Vector3 FixBy;
     void Start()
     {
         _player = GameObject.Find("Player");
@@ -10,6 +11,6 @@ public class BillBoard : MonoBehaviour
     void Update()
     {
         transform.LookAt(_player.transform.position);
-        transform.Rotate(0,90,0);
+        transform.Rotate(FixBy);
     }
 }
