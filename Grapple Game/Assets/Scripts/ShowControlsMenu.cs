@@ -4,7 +4,7 @@ using UnityEngine;
 public class ShowControlsMenu : MonoBehaviour
 {    
     GameObject _canvas;
-    float _endTime = 0.15f;
+    float _endTime = 0.3f;
     [SerializeField] float _moveBy;
     Vector3 _startPos;
     Vector3 _endPos;

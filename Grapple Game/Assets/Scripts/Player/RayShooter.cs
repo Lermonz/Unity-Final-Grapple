@@ -15,6 +15,7 @@ public class RayShooter : MonoBehaviour
     ManaBar _manaBar;
     CharacterController _controller;
     [SerializeField] Texture _crosshair;
+    AudioSource _audio;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class RayShooter : MonoBehaviour
         _stateMachine = GetComponent<PlayerStateMachine>();
         _manaBar = GetComponent<ManaBar>();
         _controller = GetComponent<CharacterController>();
+        _audio = GetComponent<AudioSource>();
     }
 
     public void Clicker()
@@ -46,6 +48,7 @@ public class RayShooter : MonoBehaviour
             return;
         }
         _manaBar.ChangeMana(-_manaCost);
+        _audio.PlayOneShot(_audio.clip);
         // Create a ray that goes forward from player
         Ray ray = new Ray(transform.position, transform.forward);
         //Debug.Log("start: "+transform.position+"\ndir: "+transform.forward);

@@ -9,8 +9,10 @@ public class SwordSwinger : MonoBehaviour
     Vector3 _newPos;
     Vector3 _newRot;
     PlayerStateMachine _player;
+    AudioSource _audio;
     void Start() {
         _player = GameObject.Find("Player").GetComponent<PlayerStateMachine>();
+        _audio = GetComponent<AudioSource>();
     }
     public void ReleaseClick(bool charge)
     {
@@ -20,6 +22,7 @@ public class SwordSwinger : MonoBehaviour
         _newPos = new Vector3(-0.71f,0.12f,1);
         _newRot = new Vector3(_origRot.x,_origRot.y,41);
         StartCoroutine(RealSwing());
+        _audio.PlayOneShot(_audio.clip);
     }
     IEnumerator RealSwing() {
         float elapsedTime = 0f;

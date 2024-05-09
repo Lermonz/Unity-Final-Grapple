@@ -35,6 +35,10 @@ public class EnemyStateMachine : MonoBehaviour
     }
     void Update() {
         _currentState.UpdateState(this);
+        if(transform.position.y < -10) {
+            _enemyHealth = 0;
+            GotHit();
+        }
     }
     public void SetState(EnemyBaseState newState) {
         if(_currentState != null) {

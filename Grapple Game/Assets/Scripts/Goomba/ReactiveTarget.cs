@@ -5,10 +5,15 @@ public class ReactiveTarget : MonoBehaviour
 {
     [SerializeField] float _deathAnimTime;
     EnemyStateMachine _stateMachine;
+    AudioSource _audio;
     bool _isDead;
 
     void Start() {
         _stateMachine = GetComponent<EnemyStateMachine>();
+        _audio = GetComponent<AudioSource>();
+        if(_audio == null) {
+            _audio = GameObject.Find("Audio").GetComponent<AudioSource>();
+        }
     }
 
     // Used for interpolating rotation
@@ -18,6 +23,7 @@ public class ReactiveTarget : MonoBehaviour
     // This code will be triggered once the entity has been shot.
     public void ReactToHit(float damage)
     {
+        _audio.PlayOneShot(_audio.clip);
         if(_stateMachine != null) {
             if(!_isDead) {
                 _stateMachine.EnemyHealth -= damage;
